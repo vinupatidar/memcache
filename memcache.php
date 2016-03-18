@@ -2,9 +2,9 @@
 
 class MemCacheClass {
 
-public $expireTime = 60; // Set the expire time
-private $isEnabled = false; /* Memcache Isenabled */
-private $objCache = null;   
+public $expireTime = 6000; // Set the expire time
+protected $isEnabled = false; /* Memcache Isenabled */
+protected $objCache = null;   
 public $a; 
     public function __construct() {
 		$this -> a = 'we are in the parent class'; 
@@ -12,10 +12,10 @@ public $a;
 
             $this->objCache = new Memcache();
            
-            if(!$this->objCache->connect('localhost', 11211)) {
-                  $this->objCache->connect('localhost', 11211);
+            if(!$this->objCache->addServer('localhost', 11211)) {
+                  $this->objCache->addServer('localhost', 11211);
                     $this->isEnabled = true;
-                    include(“db.php”);
+                    include('db.php');
             }
         }
     }
