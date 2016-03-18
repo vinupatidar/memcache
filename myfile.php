@@ -11,20 +11,9 @@ echo "Store data in the cache (data will expire in 10 seconds)<br />\n";
 echo "Data from the cache:<br />\n";
 var_dump($memcache->get("key"));
 
-  
   exit;
 */
 
-/*
-$hostname = "localhost";
-$user = "root";
-$password = "";
-$database = "pandora";
-
-$conn = mysql_connect($hostname, $user, $password) 
-or die("Ooppsss!! Something went wrong");
-mysql_select_db($database, $conn) or die(": Ooppsss !! Could not able to connect database");
-*/
 include('db.php');
 include('memcache.php');
 
@@ -36,8 +25,6 @@ class myfile extends memCacheClass {
 		 
 		 
 	public function get_all_data(){	 
-	//class Myfile extends MemCache{
-
 
 	$query ="SELECT @serial := @serial+1 AS `serial_number`,proposition.* from proposition cross join (select @serial := 0) AS serial limit 0,500";
 	
@@ -46,7 +33,7 @@ class myfile extends memCacheClass {
 	//parent::deleteData($cacheKey);
 	if($this->objCache == true)
 	{
-		echo '2';
+		//echo '2';
 		///echo $cacheKey;exit;
 		$getcacheresult = $this->objCache->get($cacheKey);
 		$assoc = $getcacheresult;
@@ -56,7 +43,7 @@ class myfile extends memCacheClass {
 	
 	if (!$assoc)
 	{	
-		echo '1';
+		//echo '1';
 		//echo $cacheKey;exit;
 		include('db.php');
 		// In case we do...because our $product variable is still null
@@ -72,10 +59,10 @@ class myfile extends memCacheClass {
 		//$data = $this->objCache->set($cacheKey, $result_prop, 0, $this->expireTime);
 	}
 			
-	/*$query ="SELECT @serial := @serial+1 AS `serial_number`,proposition.* from proposition cross join (select @serial := 0) AS serial limit 0,500";
-	$result_prop = mysql_query($query,$conn);
-	$row = mysql_fetch_array($result_prop);*/
-    //echo '<pre>'; print_r($row); exit;      
+		/*$query ="SELECT @serial := @serial+1 AS `serial_number`,proposition.* from proposition cross join (select @serial := 0) AS serial limit 0,500";
+		$result_prop = mysql_query($query,$conn);
+		$row = mysql_fetch_array($result_prop);*/
+		//echo '<pre>'; print_r($row); exit;      
 
 
 
